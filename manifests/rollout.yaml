@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: ai-devops-backend
+  namespace: default
+spec:
+  replicas: 4
+  strategy:
+    canary:
+      canaryService: ai-devops-backend-canary
+      stableService: ai-devops-backend-stable
+      trafficRouting:
+        managedPodProxy: {}
+      steps:
+      - setWeight: 10
+      - pause: { duration: 1m }
+      - setWeight: 30
+      - pause: { duration: 2m }
+  selector:
+    matchLabels:
+      app: ai-devops-backend
+  template:
+    metadata:
+      labels:
+        app: ai-devops-backend
+    spec:
+      containers:
+      - name: backend
+        image: public.ecr.aws/ecs-sample-image/amazon-ecs-sample:latest
+        ports:
+        - name: http
+          containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 256Mi
