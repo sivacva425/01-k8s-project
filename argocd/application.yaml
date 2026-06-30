@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/your-username/your-repo-name.git'
     targetRevision: HEAD
-    path: 01-k8s-intermediate-project/helm-charts/web-app
+    path: 01-k8s-project/helm-charts/web-app
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: production
