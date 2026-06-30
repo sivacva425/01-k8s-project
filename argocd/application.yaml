@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-username/your-repo-name.git'
+    repoURL: 'https://github.com/sivacva425/01-k8s-project.git'
     targetRevision: HEAD
     path: 01-k8s-project/helm-charts/web-app
   destination:
