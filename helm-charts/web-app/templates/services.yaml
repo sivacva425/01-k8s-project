@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: production-app-stable
+  name: production-web-app-stable
   namespace: default
 spec:
   type: NodePort
@@ -10,12 +10,12 @@ spec:
     targetPort: http
     protocol: TCP
   selector:
-    app: production-app
+    app: production-web-app
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: production-app-canary
+  name: production-web-app-canary
   namespace: default
 spec:
   type: NodePort
@@ -24,4 +24,4 @@ spec:
     targetPort: http
     protocol: TCP
   selector:
-    app: production-app
+    app: production-web-app
